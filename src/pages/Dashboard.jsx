@@ -6,8 +6,6 @@ import FilterButton from '../components/DropdownFilter';
 import Datepicker from '../components/Datepicker';
 import DashboardStart from '../partials/dashboard/DashboardStart';
 import DasboardLineChart from '../partials/dashboard/DashboardLineChart';
-
-import Banner from '../partials/Banner';
 import DashboardColChart from '../partials/dashboard/DashboardColChart';
 
 function Dashboard() {
@@ -64,8 +62,6 @@ function Dashboard() {
             </div>
           </div>
         </main>
-
-        <Banner />
       </div>
     </div>
   );
