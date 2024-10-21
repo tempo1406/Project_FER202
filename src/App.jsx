@@ -12,6 +12,7 @@ import Classes from './pages/Classes';
 import Teachers from './pages/Teachers';
 import Student from './pages/Student';
 import Setting from './pages/Setting';
+import Inbox from './pages/Inbox';
 
 function App() {
     const location = useLocation();
@@ -31,6 +32,7 @@ function App() {
                 <Route exact path='/teacher' element={<Teachers />} />
                 <Route exact path='/student' element={<Student />} />
                 <Route exact path='/setting' element={<Setting />} />
+                <Route exact path='/inbox' element={<Inbox />} />
             </Routes>
         </>
     );
