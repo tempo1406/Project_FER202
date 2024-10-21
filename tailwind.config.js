@@ -1,6 +1,5 @@
 import plugin from 'tailwindcss/plugin';
 import forms from '@tailwindcss/forms';
-const flowbite = require('flowbite-react/tailwind');
 
 export default {
   content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}', "./node_modules/flowbite/**/*.js"],
@@ -138,9 +137,5 @@ export default {
         );
       });
     }),
-    require('flowbite/plugin')({
-      charts: true
-    }),
-    flowbite.plugin()
   ]
 };
