@@ -4,7 +4,7 @@ import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
 import FilterButton from '../components/DropdownFilter';
 import Datepicker from '../components/Datepicker';
-import Banner from '../partials/Banner';
+
 
 const Student = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -65,8 +65,6 @@ const Student = () => {
                         </div>
                     </div>
                 </main>
-
-                <Banner />
             </div>
         </div>
     );
