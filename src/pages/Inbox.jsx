@@ -4,7 +4,6 @@ import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
 import FilterButton from '../components/DropdownFilter';
 import Datepicker from '../components/Datepicker';
-import Banner from '../partials/Banner';
 
 const Inbox = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -229,7 +228,6 @@ const Inbox = () => {
                     </div>
                 </main>
 
-                <Banner />
             </div>
         </div>
     );
