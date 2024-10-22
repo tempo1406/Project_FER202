@@ -61,7 +61,7 @@ const Student = () => {
 
                         {/* Cards */}
                         <div className='grid grid-cols-12 gap-6'>
-                            Sửa Thêm content ở phần này
+                            dasdasadsds
                         </div>
                     </div>
                 </main>
