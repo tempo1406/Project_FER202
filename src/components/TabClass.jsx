@@ -1,190 +1,238 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { DefaultPagination } from './Pagination';
+import Modal from './Modal';
 
 const TabClass = ({ onTabChange }) => {
-  return (
-    <div className='bg-white p-6 rounded-lg shadow-lg dark:bg-gray-800'>
-      <h1 className='text-xl mb-4 flex space-x-2'>
-        <span
-          className='flex items-center cursor-pointer'
-          onClick={() => onTabChange('allCenters')}
-        >
-          All Centers
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            className='h-6 w-6 text-gray-500'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-            strokeWidth='2'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              d='M9 5l7 7-7 7'
-            />
-          </svg>
-        </span>
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-        <span
-          className='flex items-center cursor-pointer'
-          onClick={() => onTabChange('walterGibson')}
-        >
-          Walter Gibson
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            className='h-6 w-6 text-gray-500'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-            strokeWidth='2'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              d='M9 5l7 7-7 7'
-            />
-          </svg>
-        </span>
+    const handleModalOpen = () => {
+        setIsModalOpen(true);
+    };
 
-        <span className='text-blue-600 font-bold cursor-pointer'>SE18A</span>
-      </h1>
+    const handleModalClose = () => {
+        setIsModalOpen(false);
+    };
 
-      <div className='min-h-screen bg-gray-100 p-6 dark:bg-gray-700'>
-        <div className='bg-white p-6 rounded-lg shadow-lg w-full max-w-full dark:bg-gray-800'>
-          <div className='flex justify-between items-center mb-4'>
-            <h2 className='text-xl font-semibold dark:text-gray-100'>Class status :</h2>
-            <span className='text-green-500 font-semibold'>In progress</span>
-          </div>
-          <div className='grid grid-cols-3 gap-6 '>
-            <div className='bg-gray-50 p-4 rounded-lg shadow text-center dark:bg-gray-700'>
-              <h3 className='text-sm font-medium text-gray-500 dark:text-gray-100'>
-                Students present
-              </h3>
-              <span className='text-green-600 text-xl font-bold'>17</span>
-            </div>
+    const optionsSelect = [
+        { value: 'Male', label: 'male' },
+        { value: 'Femal', label: 'femal' }
+    ];
 
-            <div className='bg-gray-50 p-4 rounded-lg shadow text-center dark:bg-gray-700'>
-              <h3 className='text-sm font-medium text-gray-500 dark:text-gray-100'>
-                Students absent
-              </h3>
-              <span className='text-red-500 text-xl font-bold'>2</span>
-            </div>
-            <div className='bg-gray-50 p-4 cursor-pointer rounded-lg shadow flex items-center justify-between dark:bg-gray-700' onClick={() => onTabChange('teacherInfo')}>
-              <div>
-                <h3 className='text-sm font-medium text-gray-500 dark:text-gray-100'>Teacher</h3>
-                <span className='font-semibold text-black dark:text-blue-500'>Karina</span>
-              </div>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                className='h-6 w-6 text-gray-500'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-                strokeWidth='2'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M9 5l7 7-7 7'
-                />
-              </svg>
-            </div>
-          </div>
-          <div className='flex justify-end mt-4 space-x-4'>
-            <button className='text-blue-500 hover:text-blue-700'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                className='h-6 w-6'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-                strokeWidth='2'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M12 20h9m-9-4h6M12 4v8m0 0l-3-3m3 3l3-3'
-                />
-              </svg>
-            </button>
-            <button className='text-blue-500 hover:text-blue-700'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                className='h-6 w-6'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'
-                strokeWidth='2'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M6 18L18 6M6 6l12 12'
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Students Table */}
-        <table className='min-w-full bg-white border rounded-lg mt-6 dark:bg-gray-800'>
-          <thead>
-            <tr>
-              <th className='px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-600 dark:text-gray-100'>
-                Name
-              </th>
-              <th className='px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-600 dark:text-gray-100'>
-                Status
-              </th>
-              <th className='px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-600 dark:text-gray-100'>
-                Sex
-              </th>
-              <th className='px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-gray-600 dark:text-gray-100'>
-                Fees
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {Array(10)
-              .fill(0)
-              .map((_, index) => (
-                <tr key={index} className='cursor-pointer' onClick={() => onTabChange('studentIfo')}>
-                  <td className='px-6 py-4 border-b border-gray-300 flex items-center space-x-3'>
-                    <div className='w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-700'>
-                      {index % 2 === 0 ? 'K' : 'T'}
-                    </div>
-                    <div>
-                      {index % 2 === 0
-                        ? 'Nguyễn Quốc Khang'
-                        : 'Nguyễn Tấn Tiến'}
-                    </div>
-                  </td>
-                  <td className='px-6 py-4 border-b border-gray-300'>
-                    <span
-                      className={`${
-                        index % 2 === 0 ? 'text-green-600' : 'text-red-500'
-                      }`}
+    return (
+        <div className='p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800'>
+            <h1 className='flex mb-4 space-x-2 text-xl'>
+                <span
+                    className='flex items-center cursor-pointer'
+                    onClick={() => onTabChange('allCenters')}
+                >
+                    All Centers
+                    <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        className='w-6 h-6 text-gray-500'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        stroke='currentColor'
+                        strokeWidth='2'
                     >
-                      {index % 2 === 0 ? 'Present' : 'Absent'}
-                    </span>
-                  </td>
-                  <td className='px-6 py-4 border-b border-gray-300'>Male</td>
-                  <td className='px-6 py-4 border-b border-gray-300'>$96.14</td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
+                        <path
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
+                            d='M9 5l7 7-7 7'
+                        />
+                    </svg>
+                </span>
 
-        <div className='flex justify-between items-center mt-4'>
-          <div>17 Results</div>
-          <div className='flex items-center space-x-2'>
-            <button className='px-3 py-1 border rounded-lg'>1</button>
-            <button className='px-3 py-1 border rounded-lg'>2</button>
-          </div>
+                <span
+                    className='flex items-center cursor-pointer'
+                    onClick={() => onTabChange('walterGibson')}
+                >
+                    Walter Gibson
+                    <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        className='w-6 h-6 text-gray-500'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        stroke='currentColor'
+                        strokeWidth='2'
+                    >
+                        <path
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
+                            d='M9 5l7 7-7 7'
+                        />
+                    </svg>
+                </span>
+
+                <span className='font-bold text-blue-600 cursor-pointer'>
+                    SE18A
+                </span>
+            </h1>
+
+            <div className='min-h-screen p-6 bg-gray-100 dark:bg-gray-700'>
+                <div className='w-full max-w-full p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800'>
+                    <div className='flex items-center justify-between mb-4'>
+                        <h2 className='text-xl font-semibold dark:text-gray-100'>
+                            Class status :
+                        </h2>
+                        <span className='font-semibold text-green-500'>
+                            In progress
+                        </span>
+                    </div>
+                    <div className='grid grid-cols-3 gap-6 '>
+                        <div className='p-4 text-center rounded-lg shadow bg-gray-50 dark:bg-gray-700'>
+                            <h3 className='text-sm font-medium text-gray-500 dark:text-gray-100'>
+                                Students present
+                            </h3>
+                            <span className='text-xl font-bold text-green-600'>
+                                17
+                            </span>
+                        </div>
+
+                        <div className='p-4 text-center rounded-lg shadow bg-gray-50 dark:bg-gray-700'>
+                            <h3 className='text-sm font-medium text-gray-500 dark:text-gray-100'>
+                                Students absent
+                            </h3>
+                            <span className='text-xl font-bold text-red-500'>
+                                2
+                            </span>
+                        </div>
+                        <div
+                            className='flex items-center justify-between p-4 rounded-lg shadow cursor-pointer bg-gray-50 dark:bg-gray-700'
+                            onClick={() => onTabChange('teacherInfo')}
+                        >
+                            <div>
+                                <h3 className='text-sm font-medium text-gray-500 dark:text-gray-100'>
+                                    Teacher
+                                </h3>
+                                <span className='font-semibold text-black dark:text-blue-500'>
+                                    Karina
+                                </span>
+                            </div>
+                            <svg
+                                xmlns='http://www.w3.org/2000/svg'
+                                className='w-6 h-6 text-gray-500'
+                                fill='none'
+                                viewBox='0 0 24 24'
+                                stroke='currentColor'
+                                strokeWidth='2'
+                            >
+                                <path
+                                    strokeLinecap='round'
+                                    strokeLinejoin='round'
+                                    d='M9 5l7 7-7 7'
+                                />
+                            </svg>
+                        </div>
+                    </div>
+                    <div className='flex justify-end mt-4 space-x-4'>
+                        <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            fill='none'
+                            viewBox='0 0 24 24'
+                            strokeWidth='1.5'
+                            stroke='currentColor'
+                            onClick={handleModalOpen}
+                            className='flex items-center justify-center w-10 text-blue-600 transition duration-300 cursor-pointer h-9 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-500 '
+                        >
+                            <path
+                                strokeLinecap='round'
+                                strokeLinejoin='round'
+                                d='m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10'
+                            />
+                        </svg>
+                        <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            fill='none'
+                            viewBox='0 0 24 24'
+                            strokeWidth='1.5'
+                            stroke='currentColor'
+                            className='flex items-center justify-center w-10 text-red-600 transition duration-300 cursor-pointer h-9 hover:text-red-800 dark:text-red-400 dark:hover:text-red-500'
+                        >
+                            <path
+                                strokeLinecap='round'
+                                strokeLinejoin='round'
+                                d='m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0'
+                            />
+                        </svg>
+                    </div>
+                </div>
+
+                {/* Students Table */}
+                <table className='min-w-full mt-6 bg-white border rounded-lg dark:bg-gray-800'>
+                    <thead>
+                        <tr>
+                            <th className='px-6 py-3 text-sm leading-4 text-left text-gray-600 border-b-2 border-gray-300 dark:text-gray-100'>
+                                Name
+                            </th>
+                            <th className='px-6 py-3 text-sm leading-4 text-left text-gray-600 border-b-2 border-gray-300 dark:text-gray-100'>
+                                Status
+                            </th>
+                            <th className='px-6 py-3 text-sm leading-4 text-left text-gray-600 border-b-2 border-gray-300 dark:text-gray-100'>
+                                Sex
+                            </th>
+                            <th className='px-6 py-3 text-sm leading-4 text-left text-gray-600 border-b-2 border-gray-300 dark:text-gray-100'>
+                                Fees
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody className='divide-y divide-gray-200'>
+                        {Array(10)
+                            .fill(0)
+                            .map((_, index) => (
+                                <tr
+                                    key={index}
+                                    className='cursor-pointer'
+                                    onClick={() => onTabChange('studentIfo')}
+                                >
+                                    <td className='flex items-center px-6 py-4 space-x-3 border-gray-300'>
+                                        <div className='flex items-center justify-center w-10 h-10 text-gray-700 bg-gray-300 rounded-full'>
+                                            {index % 2 === 0 ? 'K' : 'T'}
+                                        </div>
+                                        <div>
+                                            {index % 2 === 0
+                                                ? 'Nguyễn Quốc Khang'
+                                                : 'Nguyễn Tấn Tiến'}
+                                        </div>
+                                    </td>
+                                    <td className='px-6 py-4 border-b border-gray-300'>
+                                        <span
+                                            className={`${
+                                                index % 2 === 0
+                                                    ? 'text-green-600'
+                                                    : 'text-red-500'
+                                            }`}
+                                        >
+                                            {index % 2 === 0
+                                                ? 'Present'
+                                                : 'Absent'}
+                                        </span>
+                                    </td>
+                                    <td className='px-6 py-4 border-b border-gray-300'>
+                                        Male
+                                    </td>
+                                    <td className='px-6 py-4 border-b border-gray-300'>
+                                        $96.14
+                                    </td>
+                                </tr>
+                            ))}
+                    </tbody>
+                </table>
+
+                <div className='flex items-center justify-between mt-4'>
+                    <DefaultPagination />
+                </div>
+            </div>
+            <Modal
+                isOpen={isModalOpen}
+                onClose={handleModalClose}
+                title={'Add Student'}
+                name={'Student Name'}
+                type={'Sex'}
+                idSelect={''}
+                options={optionsSelect}
+            />
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default TabClass;
