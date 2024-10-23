@@ -136,8 +136,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = 'default' }) {
                                     className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
                                         pathname.includes('messages')
                                             ? ''
-                                            : 'hover:text-gray-900 dark:hover:text-white'
-                                    }`}
+                                            : 'hover:bg-gray-300 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100'
+                                    }  p-2 rounded-md`}
                                 >
                                     <div className='flex items-center justify-between'>
                                         <div className='flex items-center grow'>
@@ -184,8 +184,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = 'default' }) {
                                     className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
                                         pathname.includes('messages')
                                             ? ''
-                                            : 'hover:text-gray-900 dark:hover:text-white'
-                                    }`}
+                                            : 'hover:bg-gray-300 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100'
+                                    }  p-2 rounded-md`}
                                 >
                                     <div className='flex items-center justify-between'>
                                         <div className='flex items-center grow'>
@@ -232,8 +232,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = 'default' }) {
                                     className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
                                         pathname.includes('messages')
                                             ? ''
-                                            : 'hover:text-gray-900 dark:hover:text-white'
-                                    }`}
+                                            : 'hover:bg-gray-300 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100'
+                                    }  p-2 rounded-md`}
                                 >
                                     <div className='flex items-center justify-between'>
                                         <div className='flex items-center grow'>
@@ -280,8 +280,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = 'default' }) {
                                     className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
                                         pathname.includes('messages')
                                             ? ''
-                                            : 'hover:text-gray-900 dark:hover:text-white'
-                                    }`}
+                                            : 'hover:bg-gray-300 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100'
+                                    }  p-2 rounded-md`}
                                 >
                                     <div className='flex items-center justify-between'>
                                         <div className='flex items-center grow'>
@@ -328,8 +328,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = 'default' }) {
                                     className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
                                         pathname.includes('messages')
                                             ? ''
-                                            : 'hover:text-gray-900 dark:hover:text-white'
-                                    }`}
+                                            : 'hover:bg-gray-300 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100'
+                                    }  p-2 rounded-md`}
                                 >
                                     <div className='flex items-center justify-between'>
                                         <div className='flex items-center grow'>
@@ -391,8 +391,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = 'default' }) {
                                     className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
                                         pathname.includes('messages')
                                             ? ''
-                                            : 'hover:text-gray-900 dark:hover:text-white'
-                                    }`}
+                                            : 'hover:bg-gray-300 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100'
+                                    }  p-2 rounded-md`}
                                 >
                                     <div className='flex items-center justify-between'>
                                         <div className='flex items-center grow'>
