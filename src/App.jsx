@@ -14,9 +14,12 @@ import Student from './pages/Student';
 import Setting from './pages/Setting';
 import Inbox from './pages/Inbox';
 
-import Information from './pages/Information'
+import Information from './pages/Information';
 import Signin from './pages/Signin';
 import Register from './pages/Register';
+import TabInfoStudent from './components/TabInfoStudent';
+import TabClass from './components/TabClass';
+import AllRoute from './components/AllRoute';
 function App() {
     const location = useLocation();
 
@@ -28,18 +31,7 @@ function App() {
 
     return (
         <>
-            <Routes>
-                <Route exact path='/' element={<Dashboard />} />
-                <Route exact path='/center' element={<Center />} />
-                <Route exact path='/classes' element={<Classes />} />
-                <Route exact path='/teacher' element={<Teachers />} />
-                <Route exact path='/student' element={<Student />} />
-                <Route exact path='/setting' element={<Setting />} />
-                <Route exact path='/inbox' element={<Inbox />} />
-                <Route exact path='/information' element={<Information />}></Route>
-                <Route exact path='/signin' element={<Signin/>} />
-                <Route exact path='/register' element={<Register/>} />
-            </Routes>
+            <AllRoute />
         </>
     );
 }

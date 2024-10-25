@@ -44,7 +44,7 @@ const TabAllCenters = ({ onTabChange }) => {
                                 <tr
                                     key={index}
                                     className='transition-colors cursor-pointer '
-                                    onClick={() => onTabChange('walterGibson')}
+                                    onClick={() => onTabChange('/walterGibson')}
                                 >
                                     <td className='px-6 py-4'>
                                         <div className='flex items-center space-x-4'>

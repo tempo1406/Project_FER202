@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Sidebar from '../partials/Sidebar';
-import Header from '../partials/Header';
-import Banner from '../partials/Banner';
+import Sidebar from '../../partials/Sidebar';
+import Header from '../../partials/Header';
+
 import { Outlet } from 'react-router-dom';
 
 function Layout() {
@@ -26,8 +26,6 @@ function Layout() {
                 <main className='grow'>
                     <Outlet></Outlet>
                 </main>
-
-                <Banner />
             </div>
         </div>
     );
