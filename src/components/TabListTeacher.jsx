@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
-
-import Sidebar from '../partials/Sidebar';
-import Header from '../partials/Header';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import FilterButton from '../components/DropdownFilter';
 import Datepicker from '../components/Datepicker';
 import { DefaultPagination } from '../components/Pagination';
 import Modal from '../components/Modal';
 
-const Student = () => {
+const TabListTeacher = ({ onTabChange, showAllCenter }) => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
-
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [activeTab, setActiveTab] = useState('teacher');
+    const navigate = useNavigate(); // Call useNavigate here
+
+    const handleTabChange = (tab) => {
+        setActiveTab(tab);
+        navigate(`/teacher/${tab}`); // Fix the route format
+    };
 
     const handleModalOpen = () => {
         setIsModalOpen(true);
@@ -19,6 +23,7 @@ const Student = () => {
     const handleModalClose = () => {
         setIsModalOpen(false);
     };
+
     const optionsSelect = [
         { value: 'Huy', label: 'Huy' },
         { value: 'PC', label: 'Huy đẹp trai' },
@@ -27,40 +32,40 @@ const Student = () => {
     ];
 
     return (
-        <div className='w-full px-4 py-8 mx-auto sm:px-6 lg:px-8 max-w-9xl'>
-            {/* Dashboard actions */}
-            <div className='mb-8 sm:flex sm:justify-between sm:items-center'>
-                {/* Left: Title */}
-                <div className='mb-4 text-center sm:mb-0'>
-                    <h1 className='text-2xl font-bold text-gray-800 md:text-3xl dark:text-gray-100'>
-                        Students
-                    </h1>
-                </div>
-
-                {/* Right: Actions */}
-                <div className='grid justify-start grid-flow-col gap-2 sm:auto-cols-max sm:justify-end'>
-                    {/* Filter button */}
-                    <FilterButton align='right' />
-                    {/* Datepicker built with flatpickr */}
-                    <Datepicker align='right' />
-                    {/* Add view button */}
-                    <button className='text-gray-100 bg-gray-900 btn hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-white'>
-                        <svg
-                            className='fill-current shrink-0 xs:hidden'
-                            width='16'
-                            height='16'
-                            viewBox='0 0 16 16'
-                        >
-                            <path d='M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z' />
-                        </svg>
-                        <span className='max-xs:sr-only'>Add View</span>
-                    </button>
-                </div>
-            </div>
-
-            {/* Cards */}
+        <div>
             <div className='grid grid-cols-12 gap-6'>
                 <div className='col-span-12 p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800'>
+                    <h1 className='flex mb-4 space-x-2 text-xl'>
+                        {showAllCenter && (
+                            <span
+                                className='flex items-center cursor-pointer'
+                                onClick={() => onTabChange('')}
+                            >
+                                All Centers
+                                <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    className='w-6 h-6 text-gray-500'
+                                    fill='none'
+                                    viewBox='0 0 24 24'
+                                    stroke='currentColor'
+                                    strokeWidth='2'
+                                >
+                                    <path
+                                        strokeLinecap='round'
+                                        strokeLinejoin='round'
+                                        d='M9 5l7 7-7 7'
+                                    />
+                                </svg>
+                            </span>
+                        )}
+
+                        <span
+                            className='flex items-center font-bold text-blue-600 cursor-pointer'
+                            onClick={() => onTabChange('walterGibson')}
+                        >
+                            List Teacher
+                        </span>
+                    </h1>
                     <div className='min-h-screen p-6 bg-gray-100 dark:bg-gray-700'>
                         <div className='flex items-center justify-between mb-4'>
                             <div className='flex space-x-4'>
@@ -115,7 +120,7 @@ const Student = () => {
                                         Location
                                     </th>
                                     <th className='px-6 py-3 text-sm leading-4 text-left text-gray-600 border-b-2 border-gray-300 dark:text-gray-100'>
-                                        Giới tính
+                                        Orders
                                     </th>
                                     <th className='px-6 py-3 text-sm leading-4 text-left text-gray-600 border-b-2 border-gray-300 dark:text-gray-100'>
                                         Spent
@@ -129,7 +134,12 @@ const Student = () => {
                                         <tr
                                             key={index}
                                             className='transition-colors cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700'
-                                            onClick={() => onTabChange('class')}
+                                            onClick={
+                                                () =>
+                                                    handleTabChange(
+                                                        'teacherInfo'
+                                                    ) // Changed from onTabChange
+                                            }
                                         >
                                             <td className='px-6 py-4'>
                                                 <div className='flex items-center space-x-4'>
@@ -138,10 +148,10 @@ const Student = () => {
                                                         className='rounded-md'
                                                     />
                                                     <div className='flex items-center justify-center w-10 h-10 text-gray-700 bg-gray-200 rounded-full'>
-                                                        H
+                                                        K
                                                     </div>
                                                     <span className='text-sm font-medium text-gray-900 dark:text-gray-100'>
-                                                        Lê Nhật Huy
+                                                        Karina
                                                     </span>
                                                 </div>
                                             </td>
@@ -149,7 +159,7 @@ const Student = () => {
                                                 Sawaynchester
                                             </td>
                                             <td className='px-6 py-4 text-sm text-gray-600 dark:text-gray-300'>
-                                                Male
+                                                35
                                             </td>
                                             <td className='px-6 py-4 text-sm text-gray-600 dark:text-gray-300'>
                                                 $96.14
@@ -177,4 +187,4 @@ const Student = () => {
     );
 };
 
-export default Student;
+export default TabListTeacher;

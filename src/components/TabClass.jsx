@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { DefaultPagination } from './Pagination';
 import Modal from './Modal';
 
-const TabClass = ({ onTabChange }) => {
+const TabClass = ({
+    onTabChange,
+    showAllCenter = true,
+    clickActive = true
+}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleModalOpen = () => {
@@ -21,47 +25,72 @@ const TabClass = ({ onTabChange }) => {
     return (
         <div className='p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800'>
             <h1 className='flex mb-4 space-x-2 text-xl'>
-                <span
-                    className='flex items-center cursor-pointer'
-                    onClick={() => onTabChange('allCenters')}
-                >
-                    All Centers
-                    <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        className='w-6 h-6 text-gray-500'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        stroke='currentColor'
-                        strokeWidth='2'
+                {showAllCenter && (
+                    <span
+                        className='flex items-center cursor-pointer'
+                        onClick={() => onTabChange('allCenters')}
                     >
-                        <path
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            d='M9 5l7 7-7 7'
-                        />
-                    </svg>
-                </span>
+                        All Centers
+                        <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            className='w-6 h-6 text-gray-500'
+                            fill='none'
+                            viewBox='0 0 24 24'
+                            stroke='currentColor'
+                            strokeWidth='2'
+                        >
+                            <path
+                                strokeLinecap='round'
+                                strokeLinejoin='round'
+                                d='M9 5l7 7-7 7'
+                            />
+                        </svg>
+                    </span>
+                )}
 
-                <span
-                    className='flex items-center cursor-pointer'
-                    onClick={() => onTabChange('walterGibson')}
-                >
-                    Walter Gibson
-                    <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        className='w-6 h-6 text-gray-500'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        stroke='currentColor'
-                        strokeWidth='2'
+                {clickActive ? (
+                    <span
+                        className='flex items-center cursor-pointer'
+                        onClick={() => onTabChange('/walterGibson')}
                     >
-                        <path
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            d='M9 5l7 7-7 7'
-                        />
-                    </svg>
-                </span>
+                        Walter Gibson
+                        <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            className='w-6 h-6 text-gray-500'
+                            fill='none'
+                            viewBox='0 0 24 24'
+                            stroke='currentColor'
+                            strokeWidth='2'
+                        >
+                            <path
+                                strokeLinecap='round'
+                                strokeLinejoin='round'
+                                d='M9 5l7 7-7 7'
+                            />
+                        </svg>
+                    </span>
+                ) : (
+                    <span
+                        className='flex items-center cursor-pointer'
+                        onClick={() => onTabChange('')}
+                    >
+                        Walter Gibson
+                        <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            className='w-6 h-6 text-gray-500'
+                            fill='none'
+                            viewBox='0 0 24 24'
+                            stroke='currentColor'
+                            strokeWidth='2'
+                        >
+                            <path
+                                strokeLinecap='round'
+                                strokeLinejoin='round'
+                                d='M9 5l7 7-7 7'
+                            />
+                        </svg>
+                    </span>
+                )}
 
                 <span className='font-bold text-blue-600 cursor-pointer'>
                     SE18A
@@ -98,7 +127,7 @@ const TabClass = ({ onTabChange }) => {
                         </div>
                         <div
                             className='flex items-center justify-between p-4 rounded-lg shadow cursor-pointer bg-gray-50 dark:bg-gray-700'
-                            onClick={() => onTabChange('teacherInfo')}
+                            onClick={() => onTabChange('/teacherInfo')}
                         >
                             <div>
                                 <h3 className='text-sm font-medium text-gray-500 dark:text-gray-100'>
@@ -182,7 +211,7 @@ const TabClass = ({ onTabChange }) => {
                                 <tr
                                     key={index}
                                     className='cursor-pointer'
-                                    onClick={() => onTabChange('studentIfo')}
+                                    onClick={() => onTabChange('/studentInfo')}
                                 >
                                     <td className='flex items-center px-6 py-4 space-x-3 border-gray-300'>
                                         <div className='flex items-center justify-center w-10 h-10 text-gray-700 bg-gray-300 rounded-full'>
