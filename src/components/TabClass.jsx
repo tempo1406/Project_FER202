@@ -25,6 +25,8 @@ const TabClass = ({
     return (
         <div className='p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800'>
             <h1 className='flex mb-4 space-x-2 text-xl'>
+
+
                 {showAllCenter && (
                     <span
                         className='flex items-center cursor-pointer'
@@ -47,6 +49,8 @@ const TabClass = ({
                         </svg>
                     </span>
                 )}
+
+
 
                 {clickActive ? (
                     <span
@@ -72,7 +76,7 @@ const TabClass = ({
                 ) : (
                     <span
                         className='flex items-center cursor-pointer'
-                        onClick={() => onTabChange('')}
+                        onClick={() => onTabChange('/walterGibson')}
                     >
                         Walter Gibson
                         <svg

@@ -12,6 +12,10 @@ import TabInfoStudent from '../TabInfoStudent';
 import Setting from '../../pages/Setting';
 import { elements } from 'chart.js';
 import TabListTeacher from '../TabListTeacher';
+import Information from '../../pages/Information';
+import Signin from '../../pages/Signin';
+import Register from '../../pages/Register';
+import TabListStudent from '../TabListStudent'
 
 export const routes = [
     {
@@ -86,12 +90,34 @@ export const routes = [
             },
             {
                 path: 'student',
-                element: <Student />
+                element: <Student />,
+                children: [
+                    {
+                        path: '',
+                        element: <TabListStudent/>
+                    },
+                    {
+                        path: 'studentInfo',
+                        element: <TabInfoStudent/>
+                    }
+                ]
             },
             {
                 path: 'setting',
                 element: <Setting />
             }
         ]
+    },
+    {
+        path: 'information',
+        element: <Information />
+    },
+    {
+        path: 'signin',
+        element: <Signin />
+    },
+    {
+        path: 'register',
+        element: <Register/>
     }
 ];

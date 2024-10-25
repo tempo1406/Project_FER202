@@ -48,7 +48,7 @@ const TabWalterGibson = ({ onTabChange, showAllCenter = true }) => {
 
                 <span
                     className='flex items-center font-bold text-blue-600 cursor-pointer'
-                    onClick={() => onTabChange('walterGibson')}
+                    onClick={() => onTabChange('/walterGibson')}
                 >
                     Walter Gibson
                 </span>

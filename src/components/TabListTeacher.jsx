@@ -61,7 +61,7 @@ const TabListTeacher = ({ onTabChange, showAllCenter }) => {
 
                         <span
                             className='flex items-center font-bold text-blue-600 cursor-pointer'
-                            onClick={() => onTabChange('walterGibson')}
+                            onClick={() => onTabChange('')}
                         >
                             List Teacher
                         </span>
