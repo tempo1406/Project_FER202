@@ -81,7 +81,10 @@ const Center = () => {
                     <Route
                         path='teacherInfo'
                         element={
-                            <TabTeacherInfo onTabChange={handleTabChange} />
+                            <TabTeacherInfo
+                                onTabChange={handleTabChange}
+                                teacherActive={false}
+                            />
                         }
                     />
                 </Routes>

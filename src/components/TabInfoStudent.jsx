@@ -8,12 +8,11 @@ const TabInfoStudent = ({
     return (
         <div className='p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800'>
             <h1 className='flex mb-4 space-x-2 text-xl'>
-
-                {/* Check display AllCenter  */}
+                {/* Breadcrumb navigation */}
                 {showAllCenter && (
                     <span
                         className='flex items-center cursor-pointer'
-                        onClick={() => onTabChange('allCenters')}
+                        onClick={() => onTabChange('')}
                     >
                         All Centers
                         <svg
@@ -33,14 +32,34 @@ const TabInfoStudent = ({
                     </span>
                 )}
 
-                
                 {studentActive ? (
                     <>
                         <span
                             className='flex items-center cursor-pointer'
-                            onClick={() => onTabChange('')}
+                            onClick={() => onTabChange('/walterGibson')}
                         >
-                            List Student
+                            Walter Gibson
+                            <svg
+                                xmlns='http://www.w3.org/2000/svg'
+                                className='w-6 h-6 text-gray-500'
+                                fill='none'
+                                viewBox='0 0 24 24'
+                                stroke='currentColor'
+                                strokeWidth='2'
+                            >
+                                <path
+                                    strokeLinecap='round'
+                                    strokeLinejoin='round'
+                                    d='M9 5l7 7-7 7'
+                                />
+                            </svg>
+                        </span>
+
+                        <span
+                            className='flex items-center cursor-pointer'
+                            onClick={() => onTabChange('/class')}
+                        >
+                            SE18A
                             <svg
                                 xmlns='http://www.w3.org/2000/svg'
                                 className='w-6 h-6 text-gray-500'
@@ -61,9 +80,9 @@ const TabInfoStudent = ({
                     <>
                         <span
                             className='flex items-center cursor-pointer'
-                            onClick={() => onTabChange('/class')}
+                            onClick={() => onTabChange('')}
                         >
-                            SE18A
+                            List Student
                             <svg
                                 xmlns='http://www.w3.org/2000/svg'
                                 className='w-6 h-6 text-gray-500'

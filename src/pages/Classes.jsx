@@ -67,6 +67,7 @@ const Classes = () => {
                             <TabClass
                                 onTabChange={handleTabChange}
                                 showAllCenter={false}
+                                clickActive={false}
                             />
                         }
                     />
@@ -82,7 +83,11 @@ const Classes = () => {
                     <Route
                         path='/teacherInfo'
                         element={
-                            <TabTeacherInfo onTabChange={handleTabChange} />
+                            <TabTeacherInfo
+                                onTabChange={handleTabChange}
+                                showAllCenter={false}
+                                teacherActive={false}
+                            />
                         }
                     />
                 </Routes>
