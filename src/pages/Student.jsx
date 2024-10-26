@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 
+import Sidebar from '../partials/Sidebar';
+import Header from '../partials/Header';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import FilterButton from '../components/DropdownFilter';
 import Datepicker from '../components/Datepicker';
-import TabListStudent from '../components/TabListStudent'
+import { DefaultPagination } from '../components/Pagination';
+import Modal from '../components/Modal';
+import TabListStudent from '../components/TabListStudent';
 import TabInfoStudent from '../components/TabInfoStudent';
 
 const Student = () => {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const navigate = useNavigate(); // Define navigate here
     const [activeTab, setActiveTab] = useState('student');
     const handleTabChange = (tab) => {
@@ -16,13 +18,6 @@ const Student = () => {
         navigate(`/student${tab}`); // Use navigate to change route
     };
 
-    const handleModalOpen = () => {
-        setIsModalOpen(true);
-    };
-
-    const handleModalClose = () => {
-        setIsModalOpen(false);
-    };
     const optionsSelect = [
         { value: 'Huy', label: 'Huy' },
         { value: 'PC', label: 'Huy đẹp trai' },
@@ -62,16 +57,12 @@ const Student = () => {
                 </div>
             </div>
 
-            {/* Cards */}
             <div className='p-8'>
                 <Routes>
                     <Route
                         path='/'
                         element={
-                            <TabListStudent
-                                onTabChange={handleTabChange}
-                                showAllCenter={false}
-                            />
+                            <TabListStudent onTabChange={handleTabChange} />
                         }
                     />
                     <Route
@@ -80,6 +71,7 @@ const Student = () => {
                             <TabInfoStudent
                                 onTabChange={handleTabChange}
                                 showAllCenter={false}
+                                studentActive={false}
                             />
                         }
                     />
