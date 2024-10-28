@@ -88,7 +88,7 @@ function Header({ sidebarOpen, setSidebarOpen, variant = 'default' }) {
 
             {/* INBOX  */}
             <NavLink
-              to='http://localhost:5173/inbox'
+              to='/inbox'
               className={
                 'w-8 h-8 flex items-center justify-center hover:bg-gray-100 lg:hover:bg-gray-200 dark:hover:bg-gray-700/50 dark:lg:hover:bg-gray-800 rounded-full  text-gray-500/80 dark:text-gray-400/80'
               }
