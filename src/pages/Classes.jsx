@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import Sidebar from '../partials/Sidebar';
-import Header from '../partials/Header';
 import FilterButton from '../components/DropdownFilter';
 import Datepicker from '../components/Datepicker';
 import TabClass from '../components/TabClass';

@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
-
-import Sidebar from '../partials/Sidebar';
-import Header from '../partials/Header';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import FilterButton from '../components/DropdownFilter';
 import Datepicker from '../components/Datepicker';
-import { DefaultPagination } from '../components/Pagination';
-import Modal from '../components/Modal';
 import TabListStudent from '../components/TabListStudent';
 import TabInfoStudent from '../components/TabInfoStudent';
 

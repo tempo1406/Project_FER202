@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 
-import Sidebar from '../partials/Sidebar';
-import Header from '../partials/Header';
-import FilterButton from '../components/DropdownFilter';
-import Datepicker from '../components/Datepicker';
+
+import { Link } from 'react-router-dom';
 
 const Setting = () => {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
 
     return (
         <div className='w-full px-4 py-8 mx-auto sm:px-6 lg:px-8 max-w-9xl'>
@@ -40,9 +37,11 @@ const Setting = () => {
                     <button className='px-4 py-2 text-blue-600 border-b-2 border-blue-600'>
                         Notifications
                     </button>
-                    <button className='px-4 py-2 text-gray-600 dark:text-gray-100'>
-                        Account
-                    </button>
+                    <Link to='/information'>
+                        <button className='px-4 py-2 text-gray-600 dark:text-gray-100'>
+                            Account
+                        </button>
+                    </Link>
                     <button className='px-4 py-2 text-gray-600 dark:text-gray-100'>
                         Security
                     </button>

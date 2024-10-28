@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import FilterButton from '../components/DropdownFilter';
 import Datepicker from '../components/Datepicker';
-import { DefaultPagination } from '../components/Pagination';
-import Modal from '../components/Modal';
 import TabListTeacher from '../components/TabListTeacher';
 import TabTeacherInfo from '../components/TabTeacherInfo';
 const Teachers = () => {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const navigate = useNavigate(); // Define navigate here
     const [activeTab, setActiveTab] = useState('teacher');

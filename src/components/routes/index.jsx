@@ -10,12 +10,12 @@ import TabClass from '../TabClass';
 import TabTeacherInfo from '../TabTeacherInfo';
 import TabInfoStudent from '../TabInfoStudent';
 import Setting from '../../pages/Setting';
-import { elements } from 'chart.js';
 import TabListTeacher from '../TabListTeacher';
 import Information from '../../pages/Information';
 import Signin from '../../pages/Signin';
 import Register from '../../pages/Register';
 import TabListStudent from '../TabListStudent'
+import Inbox from '../../pages/Inbox'
 
 export const routes = [
     {
@@ -119,5 +119,9 @@ export const routes = [
     {
         path: 'register',
         element: <Register/>
+    }, 
+    {
+        path: 'inbox',
+        element: <Inbox/>
     }
 ];

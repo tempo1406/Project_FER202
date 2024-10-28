@@ -9,7 +9,6 @@ import TabInfoStudent from '../components/TabInfoStudent';
 import TabTeacherInfo from '../components/TabTeacherInfo';
 
 const Center = () => {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
 
