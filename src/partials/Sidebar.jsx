@@ -180,7 +180,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = 'default' }) {
                             >
                                 <NavLink
                                     end
-                                    to='http://localhost:5173/center'
+                                    to='/center'
                                     className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
                                         pathname.includes('messages')
                                             ? ''
@@ -228,7 +228,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = 'default' }) {
                             >
                                 <NavLink
                                     end
-                                    to='http://localhost:5173/classes'
+                                    to='/classes'
                                     className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
                                         pathname.includes('messages')
                                             ? ''
@@ -276,7 +276,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = 'default' }) {
                             >
                                 <NavLink
                                     end
-                                    to='http://localhost:5173/teacher'
+                                    to='/teacher'
                                     className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
                                         pathname.includes('messages')
                                             ? ''
@@ -324,7 +324,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = 'default' }) {
                             >
                                 <NavLink
                                     end
-                                    to='http://localhost:5173/student'
+                                    to='/student'
                                     className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
                                         pathname.includes('messages')
                                             ? ''
@@ -387,7 +387,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = 'default' }) {
                             >
                                 <NavLink
                                     end
-                                    to='http://localhost:5173/setting'
+                                    to='/setting'
                                     className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
                                         pathname.includes('messages')
                                             ? ''
