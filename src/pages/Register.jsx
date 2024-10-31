@@ -1,21 +1,79 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
-import { FacebookAuthProvider, signInWithPopup } from 'firebase/auth';
-import { authentication } from './firebase';
+import {
+    FacebookAuthProvider,
+    signInWithPopup,
+    createUserWithEmailAndPassword
+} from 'firebase/auth';
+import { auth, db } from './firebase';
+import { toast } from 'react-toastify';
+import { setDoc, doc } from 'firebase/firestore';
 function Register() {
-    const login = useGoogleLogin({
-        onSuccess: (tokenResponse) => console.log(tokenResponse)
-    });
+    const signInWithGoogle = () => {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider).then(async (result) => {
+            console.log(result);
+            const user = result.user;
+            if (result.user) {
+                await setDoc(doc(db, 'Users', user.uid), {
+                    firstName: user.displayName,
+                    photo: user.photoURL
+                });
+                toast.success('User logged in Successfully', {
+                    position: 'top-center'
+                });
+                window.location.href = '/';
+            }
+        });
+    };
+
     const signInWithFacebook = () => {
-        const provider = new FacebookAuthProvider();
-        signInWithPopup(authentication, provider)
-        .then((re) => {
-            console.log(re)
-        })
-        .catch((err) => {
-            console.log(err.message)
-        })
+        signInWithPopup(auth, provider).then(async (result) => {
+            console.log(result);
+            const user = result.user;
+            if (result.user) {
+                await setDoc(doc(db, 'Users', user.uid), {
+                    firstName: user.displayName,
+                    photo: user.photoURL
+                });
+                toast.success('User logged in Successfully', {
+                    position: 'top-center'
+                });
+                window.location.href = '/';
+            }
+        });
+    };
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [fname, setFname] = useState('');
+    const [lname, setLname] = useState('');
+
+    const handleRegister = async (e) => {
+        e.preventDefault();
+        try {
+            await createUserWithEmailAndPassword(auth, email, password);
+            const user = auth.currentUser;
+            console.log(user);
+            if (user) {
+                await setDoc(doc(db, 'Users', user.uid), {
+                    email: user.email,
+                    firstName: fname,
+                    lastName: lname,
+                    photo: ''
+                });
+            }
+            console.log('User Registered Successfully!!');
+            toast.success('User Registered Successfully!!', {
+                position: 'top-center'
+            });
+        } catch (error) {
+            console.log(error.message);
+            toast.error(error.message, {
+                position: 'bottom-center'
+            });
+        }
     };
     return (
         <div className='min-h-screen flex items-center justify-center'>
@@ -29,7 +87,35 @@ function Register() {
                         Sign in
                     </Link>
                 </p>
-                <form>
+                <form onSubmit={handleRegister}>
+                    <div className='mb-4'>
+                        <label
+                            htmlFor='text'
+                            className='block text-gray-700 dark:text-gray-300'
+                        >
+                            First Name
+                        </label>
+                        <input
+                            type='text'
+                            onChange={(e) => setFname(e.target.value)}
+                            placeholder='Enter First Name'
+                            className='w-full p-3 mt-2 border border-gray-300 dark:bg-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600'
+                        />
+                    </div>
+                    <div className='mb-4'>
+                        <label
+                            htmlFor='text'
+                            className='block text-gray-700 dark:text-gray-300'
+                        >
+                            Last Name
+                        </label>
+                        <input
+                            type='text'
+                            onChange={(e) => setLname(e.target.value)}
+                            placeholder='Enter Email Address or Phone Number'
+                            className='w-full p-3 mt-2 border border-gray-300 dark:bg-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600'
+                        />
+                    </div>
                     <div className='mb-4'>
                         <label
                             htmlFor='email'
@@ -40,6 +126,7 @@ function Register() {
                         <input
                             type='email'
                             id='email'
+                            onChange={(e) => setEmail(e.target.value)}
                             placeholder='Enter Email Address or Phone Number'
                             className='w-full p-3 mt-2 border border-gray-300 dark:bg-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600'
                         />
@@ -54,6 +141,7 @@ function Register() {
                         <input
                             type='password'
                             id='password'
+                            onChange={(e) => setPassword(e.target.value)}
                             placeholder='Create Password'
                             className='w-full p-3 mt-2 border border-gray-300 dark:bg-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600'
                         />
@@ -84,7 +172,7 @@ function Register() {
                 <div className='space-y-4'>
                     <button
                         className='w-full flex items-center justify-center p-4 border border-gray-300 rounded-lg hover:bg-gray-100 transition duration-300'
-                        onClick={() => login()}
+                        onClick={signInWithGoogle}
                     >
                         <img
                             src='https://www.google.com/favicon.ico'
@@ -93,7 +181,10 @@ function Register() {
                         />
                         Continue with Google
                     </button>
-                    <button className='w-full flex items-center justify-center p-4 border border-gray-300 rounded-lg hover:bg-gray-100 transition duration-300' onClick={signInWithFacebook}>
+                    <button
+                        className='w-full flex items-center justify-center p-4 border border-gray-300 rounded-lg hover:bg-gray-100 transition duration-300'
+                        onClick={signInWithFacebook}
+                    >
                         <img
                             src='https://www.facebook.com/favicon.ico'
                             alt='Facebook'
