@@ -1,22 +1,70 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useGoogleLogin } from '@react-oauth/google';
-import { FacebookAuthProvider, signInWithPopup } from 'firebase/auth';
-import { authentication } from './firebase';
+import {
+    FacebookAuthProvider,
+    signInWithPopup,
+    GoogleAuthProvider,
+    signInWithEmailAndPassword
+} from 'firebase/auth';
+import { auth, db } from './firebase';
+import { doc, setDoc } from 'firebase/firestore';
+import { toast } from 'react-toastify';
 function Signin() {
-    const login = useGoogleLogin({
-        onSuccess: (tokenResponse) => console.log(tokenResponse)
-    });
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            console.log('User logged in Successfully');
+            window.location.href = '/';
+            toast.success('User logged in Successfully', {
+                position: 'top-center'
+            });
+        } catch (error) {
+            console.log(error.message);
+
+            toast.error(error.message, {
+                position: 'bottom-center'
+            });
+        }
+    };
+
+    const signInWithGoogle = () => {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider).then(async (result) => {
+            console.log(result);
+            const user = result.user;
+            if (result.user) {
+                await setDoc(doc(db, 'Users', user.uid), {
+                    firstName: user.displayName,
+                    photo: user.photoURL
+                });
+                toast.success('User logged in Successfully', {
+                    position: 'top-center'
+                });
+                window.location.href = '/';
+            }
+        });
+    };
 
     const signInWithFacebook = () => {
         const provider = new FacebookAuthProvider();
-        signInWithPopup(authentication, provider)
-        .then((re) => {
-            console.log(re)
-        })
-        .catch((err) => {
-            console.log(err.message)
-        })
+        signInWithPopup(auth, provider).then(async (result) => {
+            console.log(result);
+            const user = result.user;
+            if (result.user) {
+                await setDoc(doc(db, 'Users', user.uid), {
+                    firstName: user.displayName,
+                    photo: user.photoURL
+                });
+                toast.success('User logged in Successfully', {
+                    position: 'top-center'
+                });
+                window.location.href = '/';
+            }
+        });
     };
 
     return (
@@ -31,7 +79,7 @@ function Signin() {
                         Create an Account
                     </Link>
                 </p>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className='mb-4'>
                         <label
                             htmlFor='email'
@@ -40,6 +88,8 @@ function Signin() {
                             Email
                         </label>
                         <input
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             type='email'
                             id='email'
                             placeholder='Enter Email Address or Phone Number'
@@ -54,6 +104,8 @@ function Signin() {
                             Password
                         </label>
                         <input
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             type='password'
                             id='password'
                             placeholder='Enter Password'
@@ -71,14 +123,12 @@ function Signin() {
                             </span>
                         </label>
                     </div>
-                    <Link to='/'>
-                        <button
-                            type='submit'
-                            className='w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300'
-                        >
-                            Create Account
-                        </button>
-                    </Link>
+                    <button
+                        type='submit'
+                        className='w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300'
+                    >
+                        Sign in
+                    </button>
                 </form>
                 <div className='text-center mt-4'>
                     <a href='#' className='text-blue-600'>
@@ -95,7 +145,7 @@ function Signin() {
                 <div className='space-y-4'>
                     <button
                         className='w-full flex items-center justify-center p-4 border border-gray-300 rounded-lg hover:bg-gray-100 transition duration-300'
-                        onClick={() => login()}
+                        onClick={signInWithGoogle}
                     >
                         <img
                             src='https://www.google.com/favicon.ico'
@@ -104,7 +154,10 @@ function Signin() {
                         />
                         Continue with Google
                     </button>
-                    <button className='w-full flex items-center justify-center p-4 border border-gray-300 rounded-lg hover:bg-gray-100 transition duration-300' onClick={signInWithFacebook}>
+                    <button
+                        className='w-full flex items-center justify-center p-4 border border-gray-300 rounded-lg hover:bg-gray-100 transition duration-300'
+                        onClick={signInWithFacebook}
+                    >
                         <img
                             src='https://www.facebook.com/favicon.ico'
                             alt='Facebook'
