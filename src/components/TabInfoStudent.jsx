@@ -349,11 +349,11 @@ const TabInfoStudent = ({
                         </div>
                     </div>
                 </div>
-                <div class='flex justify-end space-x-4 mt-6'>
-                    <button class='px-4 py-2 text-gray-600 bg-gray-100 rounded-md'>
+                <div className='flex justify-end space-x-4 mt-6'>
+                    <button className='px-4 py-2 text-gray-600 bg-gray-100 rounded-md'>
                         Cancel
                     </button>
-                    <button class='px-4 py-2 text-white bg-blue-600 rounded-md'>
+                    <button className='px-4 py-2 text-white bg-blue-600 rounded-md'>
                         Save
                     </button>
                 </div>

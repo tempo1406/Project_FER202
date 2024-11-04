@@ -133,7 +133,6 @@ function Register() {
                     </div>
                     <div className='mb-4'>
                         <label
-                            htmlFor='password'
                             className='block text-gray-700 dark:text-gray-300'
                         >
                             Password

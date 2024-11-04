@@ -77,7 +77,7 @@ const Setting = () => {
                     </label>
                 </div>
 
-                <div class='flex items-center justify-between mb-4'>
+                <div className='flex items-center justify-between mb-4'>
                     <div>
                         <p className='text-sm font-medium dark:text-gray-100'>
                             New Features
