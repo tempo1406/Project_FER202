@@ -9,6 +9,7 @@ import {
 import { auth, db } from './firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
+
 function Signin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -24,7 +25,6 @@ function Signin() {
             });
         } catch (error) {
             console.log(error.message);
-
             toast.error(error.message, {
                 position: 'bottom-center'
             });
@@ -111,17 +111,6 @@ function Signin() {
                             placeholder='Enter Password'
                             className='w-full p-3 mt-2 border border-gray-300 dark:bg-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600'
                         />
-                    </div>
-                    <div className='flex items-center justify-between mb-4'>
-                        <label className='inline-flex items-center'>
-                            <input
-                                type='checkbox'
-                                className='form-checkbox h-4 w-4 text-blue-600 dark:border-gray-300'
-                            />
-                            <span className='ml-2 text-gray-700 dark:text-gray-300'>
-                                Keep me signed in
-                            </span>
-                        </label>
                     </div>
                     <button
                         type='submit'
