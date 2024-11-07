@@ -28,23 +28,6 @@ const Classes = () => {
                         Classes
                     </h1>
                 </div>
-
-                {/* Right: Actions */}
-                <div className='grid justify-start grid-flow-col gap-2 sm:auto-cols-max sm:justify-end'>
-                    <FilterButton align='right' />
-                    <Datepicker align='right' />
-                    <button className='flex items-center justify-center px-4 py-2 text-gray-100 bg-gray-900 rounded-md hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-gray-200'>
-                        <svg
-                            className='fill-current shrink-0 xs:hidden'
-                            width='16'
-                            height='16'
-                            viewBox='0 0 16 16'
-                        >
-                            <path d='M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z' />
-                        </svg>
-                        <span className='max-xs:sr-only'>Add View</span>
-                    </button>
-                </div>
             </div>
 
             {/* Tab content based on routes */}

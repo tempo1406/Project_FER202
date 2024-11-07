@@ -67,7 +67,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = 'default' }) {
             <div
                 id='sidebar'
                 ref={sidebar}
-                className={`flex lg:!flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-[100dvh] overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-white dark:bg-gray-800 p-4 transition-all duration-200 ease-in-out ${
+                className={`flex lg:!flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-[100dvh] overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-24 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-white dark:bg-gray-800 p-4 transition-all duration-200 ease-in-out ${
                     sidebarOpen ? 'translate-x-0' : '-translate-x-64'
                 } ${
                     variant === 'v2'
@@ -113,7 +113,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = 'default' }) {
                     <div>
                         <h3 className='pl-3 text-xs font-semibold text-gray-400 uppercase dark:text-gray-500'>
                             <span
-                                className='hidden w-6 text-center lg:block lg:sidebar-expanded:hidden 2xl:hidden'
+                                className='hidden w-6 pl-4 text-center lg:block lg:sidebar-expanded:hidden 2xl:hidden'
                                 aria-hidden='true'
                             >
                                 •••
@@ -368,7 +368,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen, variant = 'default' }) {
                     <div>
                         <h3 className='pl-3 text-xs font-semibold text-gray-400 uppercase dark:text-gray-500'>
                             <span
-                                className='hidden w-6 text-center lg:block lg:sidebar-expanded:hidden 2xl:hidden'
+                                className='hidden w-6 pl-4 text-center lg:block lg:sidebar-expanded:hidden 2xl:hidden'
                                 aria-hidden='true'
                             >
                                 •••
